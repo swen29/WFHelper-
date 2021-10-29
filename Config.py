@@ -1,6 +1,8 @@
 from utils.ImageUtil import getImageHash
 
 class Config():
+    resetArea = (20,2860,200,3030) #返回/城镇/主角色 按键区
+    
     lingdangPath = "images\lingdang.png"
     lingdangArea = (40,210,145,315)
     # lingdangPos = ((lingdangArea[0]+lingdangArea[2])/2,((lingdangArea[1]+lingdangArea[3])/2))
@@ -20,7 +22,7 @@ class Config():
     jixuArea = (490,2660,950,2790)
     # jixuPos = ((jixuArea[0]+jixuArea[2])/2,((jixuArea[1]+jixuArea[3])/2))
     jixuHash = getImageHash(path=jixuPath)
-    
-    goArea = (490,2660,670,2790) #继续/离开 按键区
-    resetArea = (20,2860,200,3030) #返回/城镇/主角色 按键区
-    
+   
+    goArea = jixuArea 
+    goArea[2] = int((goArea[0]+goArea[2])/2) #继续/离开 左侧按键区（不要点到右边“返回房间”里去了）
+    #goArea = (490,2660,670,2790) #更推荐自己手动截取“继续”和“离开房间”的交集区域
